@@ -402,7 +402,8 @@ main(int argc, char *argv[]) {
 
         /* init memory for input and output */
         compress_io cio;
-        // 一行的数据量
+        // 一行的数据量。
+        // 因为bmp文件中，一行的字节数必须是4的倍数，因此(binfo.width * 3 + 3) / 4 * 4就可以将binfo.width向上对齐到最近的4的倍数
         int in_size = (binfo.width * 3 + 3) / 4 * 4;
         int out_size = MEM_OUT_SIZE;
         init_mem(&cio, bmp_fp, in_size, jpeg_fp, out_size);
